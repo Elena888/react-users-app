@@ -1,21 +1,24 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import logo from '../img/logo.png'
 
 const Header = () => {
+
     return (
-        <header className="ui inverted menu">
+        <header className="ui inverted vertical segment">
             <div className="ui container">
-                <Link to="/" className="item">
+                <div className="ui large secondary inverted pointing menu">
+                <NavLink exact to="/" className="item">
                     <img src={logo} className="logo" alt="logo"/>
-                </Link>
+                </NavLink>
                 <div className="right item">
-                    <Link to="/" className="item">
+                    <NavLink exact to="/" className="item">
                         Users
-                    </Link>
-                    <Link to="/about-author" className="item">
+                    </NavLink>
+                    <NavLink to="/about-author" className="item">
                         About Author
-                    </Link>
+                    </NavLink>
+                </div>
                 </div>
             </div>
         </header>

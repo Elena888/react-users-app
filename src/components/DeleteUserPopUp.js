@@ -1,19 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { fetchUser, deleteUser } from '../actions';
+import { deleteUser } from '../actions';
 
 class DeleteUserPopUp extends React.Component{
-    componentDidMount(){
-        this.props.fetchUser(this.props.userId)
-    }
 
     handleClick = () => {
-        this.props.deleteUser(this.props.userId);
+        this.props.deleteUser(this.props.userData.id);
         this.props.closePopup()
     };
 
     render(){
-        const {first_name, last_name} = this.props.user;
+        const {first_name, last_name} = this.props.userData;
         return(
             <div className="popup" onClick={this.props.closePopup}>
                 <div className="popup_inner" onClick={e => e.stopPropagation()}>
@@ -28,10 +25,5 @@ class DeleteUserPopUp extends React.Component{
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-       user: state.users[ownProps.userId]
-    }
-};
 
-export default connect(mapStateToProps, { fetchUser, deleteUser })(DeleteUserPopUp);
+export default connect(null, { deleteUser })(DeleteUserPopUp);

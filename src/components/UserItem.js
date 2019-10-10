@@ -132,7 +132,7 @@ class UserItem extends React.Component{
                     <div className="email">{email}</div>
                 </div>
                 {this.state.showDeletePopUp &&
-                   <DeleteUserPopUp closePopup={this.closePopup} userId={id}/>
+                   <DeleteUserPopUp closePopup={this.closePopup} userData={this.props.userData}/>
                 }
             </div>
         )

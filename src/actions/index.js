@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_ERROR, FETCH_USERS, DELETE_USER, EDIT_USER, FETCH_USER} from './types'
+import {FETCH_ERROR, FETCH_USERS, DELETE_USER, EDIT_USER} from './types'
 
 const url = 'https://reqres.in/api/users';
 
@@ -16,20 +16,6 @@ export const fetchUsers = () => async dispatch => {
         const data = response.data.data;
         dispatch({
             type: FETCH_USERS,
-            payload: data
-        })
-    }catch (e) {
-        dispatch(fetchError(true))
-    }
-
-};
-
-export const fetchUser = (id) => async dispatch => {
-    try{
-        const response = await axios.get(`${url}/${id}`);
-        const data = response.data.data;
-        dispatch({
-            type: FETCH_USER,
             payload: data
         })
     }catch (e) {
