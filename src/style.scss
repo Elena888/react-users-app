@@ -26,6 +26,9 @@ body{
 .logo{
     max-height: 50px;
 }
+.logo-link.active{
+    border: none !important;
+}
 .ui.menu{
     border-radius: 0 !important;
     font-size: 18px;
@@ -85,12 +88,11 @@ body{
         width: 100%;
     }
     .upload-btns{
-        input{
-            width: 50% !important;
-            margin-right: 10px !important;
-            display: block;
-            float: left;
-        }
+      display: flex;
+      input{
+        font-size: 12px !important;
+        margin-right: 5px !important;
+      }
     }
 }
 

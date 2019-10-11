@@ -12,21 +12,24 @@ const validateForm = (errors) => {
 };
 
 class UserItem extends React.Component{
-    state = {
-        isEditing: false,
-        showDeletePopUp: false,
-        avatar: this.props.userData.avatar,
-        avatar_file: '',
-        progress: 0,
-        first_name:  this.props.userData.first_name,
-        last_name: this.props.userData.last_name,
-        email: this.props.userData.email,
-        errors: {
-            first_name:  '',
-            last_name: '',
-            email: ''
-        }
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            isEditing: false,
+            showDeletePopUp: false,
+            avatar_file: '',
+            progress: 0,
+            avatar: this.props.userData.avatar,
+            first_name:  this.props.userData.first_name,
+            last_name: this.props.userData.last_name,
+            email: this.props.userData.email,
+            errors: {
+                first_name:  '',
+                last_name: '',
+                email: ''
+            }
+        };
+    }
 
     handleChange = (event) => {
         let { name, value } = event.target;
@@ -106,6 +109,18 @@ class UserItem extends React.Component{
         this.setState({ isEditing: true })
     };
 
+    cancelEditing = () => {
+        this.setState({
+            isEditing: false,
+            avatar_file: '',
+            progress: 0,
+            avatar: this.props.userData.avatar,
+            first_name:  this.props.userData.first_name,
+            last_name: this.props.userData.last_name,
+            email: this.props.userData.email
+        })
+    };
+
     showPopUp = () => {
         this.setState({ showDeletePopUp: true })
     };
@@ -175,6 +190,7 @@ class UserItem extends React.Component{
                     </div>
                     <div className="field center aligned ">
                         <button className="ui teal button" type="submit">Save</button>
+                        <button className="ui button" type="button" onClick={this.cancelEditing}>Cancel</button>
                     </div>
                 </form>
             </div>
